@@ -14,6 +14,7 @@ $key = mysqli_real_escape_string($conn, $_POST['key']); // получаем кл
 $timestamp = mysqli_real_escape_string($conn, $_POST['timestamp']); // получаем время из POST-запроса и экранируем его
 
 $sql = "INSERT INTO 'keys' ('key') VALUES ('$key')"; // формируем SQL-запрос
+//$sql = INSERT INTO `keys` (`key`) VALUES ('werwefwf');
 if (mysqli_query($conn, $sql)) {
   echo 'Ключ успешно сохранен в базе данных'; // отправляем ответ клиенту
 } else {
