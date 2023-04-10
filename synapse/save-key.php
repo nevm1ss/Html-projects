@@ -1,24 +1,36 @@
 <?php
+// Подключение к базе данных
+$servername = "mysql-188944.srv.hoster.ru";
+$username = "srv188944_nevm";
+$password = "yG69tL5u9Y";
+$dbname = "srv188944_nevm";
 
-$host = 'mysql-188944.srv.hoster.ru'; // хост базы данных
-$user = 'srv188944_nevm'; // имя пользователя базы данных
-$password = 'yG69tL5u9Y'; // пароль пользователя базы данных
-$dbname = 'srv188944_nevm'; // имя базы данных
-
-$conn = mysqli_connect($host, $user, $password, $dbname); // подключаемся к базе данных
-if (!$conn) {
-  die('Ошибка подключения: ' . mysqli_connect_error());
+$conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
 }
 
-$key = mysqli_real_escape_string($conn, $_POST['key']); // получаем ключ из POST-запроса и экранируем его
-$timestamp = mysqli_real_escape_string($conn, $_POST['timestamp']); // получаем время из POST-запроса и экранируем его
+// Генерация ключа
+$key = generate_key();
 
-$sql = "INSERT INTO 'keys' ('key') VALUES ('$key')"; // формируем SQL-запрос
-//$sql = INSERT INTO `keys` (`key`) VALUES ('werwefwf');
-if (mysqli_query($conn, $sql)) {
-  echo 'Ключ успешно сохранен в базе данных'; // отправляем ответ клиенту
+// Запись ключа в базу данных
+$sql = "INSERT INTO KeyTables (KeyActivation) VALUES ('$key')";
+if ($conn->query($sql) === TRUE) {
+  echo "Key generated and saved successfully";
 } else {
-  echo 'Ошибка сохранения ключа в базе данных: ' . mysqli_error($conn); // отправляем ответ клиенту
+  echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
-mysqli_close($conn); // закрываем соединение с базой данных
+// Функция для генерации ключа
+function generate_key() {
+  $key = '';
+  $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  for ($i = 0; $i < 16; $i++) {
+    $index = rand(0, strlen($characters) - 1);
+    $key .= $characters[$index];
+  }
+  return $key;
+}
+
+$conn->close();
+?>
