@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    align-items: center;
+    margin: 50px auto;
+    color: #1D1D1D;
+    justify-content: center;
+    flex-direction: column;
+}
+
+h1 {
+    margin: 100px 0 0 0;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 42px;
+    letter-spacing: 0.02em;
+}
+
+p {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: lighter;
+    font-size: 18px;
+    line-height: 150%;
+    letter-spacing: 0.015em;
+}
+
+a {
+    text-decoration: none;
+    color: #1D1D1D;
+}
+
+/* header */
+
+header {
+    display: flex;
+}
+
+.logo {
+    font-size: 32px;
+    letter-spacing: 0.26em;
+    font-family: 'PT Sans', sans-serif;
+    font-weight: 700;
+}
+
+.nav {
+    display: flex;
+    width: 500px;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 70px;
+}
+
+/* communication button */
+
+.communication {
+    background: #FFFFFF;
+    border: 2px solid #515CA3;
+    border-radius: 7px;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 70px;
+
+    font-family: 'PT Sans';
+    font-weight: 700;
+    font-size: 16px;
+    padding: 10px 50px;
+}
+
+.communication:hover {
+    background: #515CA3;
+    color: #FFFFFF;
+    transition: 0.4s;
+}
+
+/* about */
+
+.container {
+    margin-top: 100px;
+    width: 1110px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.block {
+    width: 720px;
+}
+
+.block h2 {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 18px; 
+    color: #515CA3; 
+}
+
+.block h3 {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    color: #1D1D1D;
+}
+
+
